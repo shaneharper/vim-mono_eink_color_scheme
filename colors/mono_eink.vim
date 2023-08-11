@@ -131,11 +131,7 @@ endfor
 
 
 " Text styles for 1-bit color terminals --------------------------------------- {{{
-hi Identifier term=none
-hi PreProc term=none
-hi Statement term=none
-hi Type term=none
-
+" (Identifier, Number, PreProc, Statement and Type are already linked to Normal.)
 hi Comment term=italic
 hi LineNr term=italic
 hi StatusLine term=reverse
