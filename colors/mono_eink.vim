@@ -1,3 +1,6 @@
+" Vim Mono E Ink Color Scheme
+" by: shane@shaneharper.net
+"
 " This requires at least vim v8.1-1543 (support for "const").
 
 set background=light | hi clear  " Reset all highlighting to the defaults (for a light background).
@@ -34,6 +37,7 @@ let defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
     # No distracting, unhelpful syntax highlighting.
+    #  xxx Remove "unwanted" syntax rules. Completing this has a low priority as what's currently implemented (linking the highlight groups associated with the "unwanted" syntax rules to the Normal group) usually works quite well. (See https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/vim/colors/sgh.vim#L33.)
     Identifier -> Normal
     Number -> Normal
     PreProc -> Normal
