@@ -14,11 +14,12 @@ Some might enjoy using this color scheme on a color display. There is sparing us
 
 ## Recommended [Onyx Boox Mira](https://onyxboox.com/boox_mira) monitor settings
 
-* Display Mode: Normal (&#9635;<!-- Unicode character 9635 is "white square containing a small black square". xxx The symbol isn't quite right; the icon for the Normal display mode has rounded corners but Unicode character 9635 does not have rounded corners. Use an image (an SVG?) instead. -->)
-* Dark Color Enhancement: 3  <!-- xxx Include an image (an SVG?) of the Dark Color Enhancement icon? -->
-* Light Color Filter: 1
-* Resolution: 2184 x 1626
-  <br>(Windows 11 display scaling: 175%)
+| Option                 | Value |
+|------------------------|-------|
+| Display Mode           | Normal (&#9635;<!-- Unicode character 9635 is "white square containing a small black square". xxx The symbol isn't quite right; the icon for the Normal display mode has rounded corners but Unicode character 9635 does not have rounded corners. Use an image (an SVG?) instead. -->) |
+| Dark Color Enhancement | 3   <!-- xxx Include an image (an SVG?) of the Dark Color Enhancement icon? --> |
+| Light Color Filter     | 1 |
+| Resolution             | 2184 x 1626<br>(Windows 11 display scaling: 175%) |
 
 <!-- XXX Provide a command to set these settings. Use https://github.com/elithper/miractl? -->
 
