@@ -27,5 +27,4 @@ Some might enjoy using this color scheme on a color display. There is sparing us
 ## Windows Terminal set up
 
 * **Enable display of bold text**
-  <br>By default Windows Terminal will use the regular font for text that should appear bold in Vim; Fix by setting `"Intense Text Style"` to `"Bold font with bright colors"`, or to `"Bold"`. <!-- Note: `"Bright colors"` is used by default for `"Intense Text Style"` (Windows Terminal v1.17.11461.0). -->
-  <br>(`Intense Text Style` can be set from `Settings` &#9659; `Profiles/Defaults` &#9659; `Additional Settings/Appearance` &#9659; `Text Formatting/Intense Text Style`.)
+  <br>By default Windows Terminal will use the regular font for text that should appear bold in Vim; fix by setting `"Intense Text Style"` to `"Bold font with bright colors"`, or to `"Bold"`. <!-- Note: `"Bright colors"` is used by default for `"Intense Text Style"` (Windows Terminal v1.17.11461.0). --> (`Intense Text Style` can be set from `Settings` &#9659; `Profiles/Defaults` &#9659; `Additional Settings/Appearance` &#9659; `Text Formatting/Intense Text Style`.)
