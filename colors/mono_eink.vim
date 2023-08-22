@@ -36,6 +36,20 @@ endfunction
 let defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
+    # UI Elements (things other than buffer text)------------------------------ {{{
+    LineNr 22 w italic
+    # Status Lines ------------------------------------------------------------ {{{
+        StatusLine w b bold  # (Black background stands out.)
+        StatusLineNC w 11 bold  # (NC = not-current)  xxx It might be nice to use a black background for StatusLineNC; "blank areas" of a non-current window's status line could be filled with '-'s to distinguish those windows from the current window. See :help status-line? '^', '='? Really need to look at :help statusline (no '-' in 'statusline'). (Using "StatusLineNC -> StatusLine" will cause Vim to automatically add a line of '^'s to the status line of the current window - Not ideal as the string of '^'s make the current window's status line appear overall lighter than the status line/s of non-current window/s.)
+        StatusLineTerm -> StatusLine
+        StatusLineTermNC -> StatusLineNC
+        VertSplit -> StatusLine
+    # }}}
+    NonText 22 w
+    Pmenu b 22
+    PmenuSel w b bold
+    # }}}
+
     # No distracting, unhelpful syntax highlighting.
     #  xxx Remove "unwanted" syntax rules. Completing this has a low priority as what's currently implemented (linking the highlight groups associated with the "unwanted" syntax rules to the Normal group) usually works quite well. (See https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/vim/colors/sgh.vim#L33.)
     Identifier -> Normal
@@ -51,12 +65,8 @@ let defs =<< trim END
     Folded w 14 italic,bold
     helpHyperTextJump b w underline
     helpHyperTextEntry b w italic
-    LineNr 22 w italic
     # xxx MatchParen
     netrwSymlink b w
-    NonText 22 w
-    Pmenu b 22
-    PmenuSel w b bold
     Search w 15 bold
     Special DarkMagenta w
     String 14 w bold  # Strings seem to be defined to include the character/s that mark the start and end of a string; xxx I'd prefer if those characters could be highlighted different to the rest of the string (and I'd prefer that no styling be applied to them).
@@ -96,14 +106,6 @@ let defs =<< trim END
     SpellCap w 17   # It'd be nice if SpellCap was displayed with a bold first letter (SpellCap is a word that should start with a capital letter). Use a "contained" highlight group for the first letter (similar to how "TODO" is handled in comments) - see https://vi.stackexchange.com/a/19043 and :help syn-contained.
     SpellLocal w 17
     SpellRare w 17 italic
-    # }}}
-
-    # Status Lines ------------------------------------------------------------ {{{
-    StatusLine w b bold  # (Black background stands out.)
-    StatusLineNC w 11 bold  # (NC = not-current)  xxx It might be nice to use a black background for StatusLineNC; "blank areas" of a non-current window's status line could be filled with '-'s to distinguish those windows from the current window. See :help status-line? '^', '='? Really need to look at :help statusline (no '-' in 'statusline'). (Using "StatusLineNC -> StatusLine" will cause Vim to automatically add a line of '^'s to the status line of the current window - Not ideal as the string of '^'s make the current window's status line appear overall lighter than the status line/s of non-current window/s.)
-    StatusLineTerm -> StatusLine
-    StatusLineTermNC -> StatusLineNC
-    VertSplit -> StatusLine
     # }}}
 
     # Version control plugins ------------------------------------------------- {{{
