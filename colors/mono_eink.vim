@@ -46,8 +46,12 @@ let defs =<< trim END
         VertSplit -> StatusLine
     # }}}
     NonText 22 w
-    Pmenu b 22
-    PmenuSel w b bold
+    # Popup Menus ------------------------------------------------------------- {{{
+        Pmenu b 22
+        PmenuSel w b bold
+        PmenuSbar NONE 17
+        PmenuThumb NONE b
+    # }}}
     # }}}
 
     # No distracting, unhelpful syntax highlighting.
