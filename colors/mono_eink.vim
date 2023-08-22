@@ -37,21 +37,21 @@ let defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
     # UI Elements (things other than buffer text)------------------------------ {{{
-    LineNr 22 w italic
-    # Status Lines ------------------------------------------------------------ {{{
-        StatusLine w b bold  # (Black background stands out.)
-        StatusLineNC w 11 bold  # (NC = not-current)  xxx It might be nice to use a black background for StatusLineNC; "blank areas" of a non-current window's status line could be filled with '-'s to distinguish those windows from the current window. See :help status-line? '^', '='? Really need to look at :help statusline (no '-' in 'statusline'). (Using "StatusLineNC -> StatusLine" will cause Vim to automatically add a line of '^'s to the status line of the current window - Not ideal as the string of '^'s make the current window's status line appear overall lighter than the status line/s of non-current window/s.)
-        StatusLineTerm -> StatusLine
-        StatusLineTermNC -> StatusLineNC
-        VertSplit -> StatusLine
-    # }}}
-    NonText 22 w
-    # Popup Menus ------------------------------------------------------------- {{{
-        Pmenu b 22
-        PmenuSel w b bold
-        PmenuSbar NONE 17
-        PmenuThumb NONE b
-    # }}}
+        LineNr 22 w italic
+        NonText 22 w
+        # Popup Menus --------------------------------------------------------- {{{
+            Pmenu b 22
+            PmenuSel w b bold
+            PmenuSbar NONE 17
+            PmenuThumb NONE b
+        # }}}
+        # Status Lines -------------------------------------------------------- {{{
+            StatusLine w b bold  # (Black background stands out.)
+            StatusLineNC w 11 bold  # (NC = not-current)  xxx It might be nice to use a black background for StatusLineNC; "blank areas" of a non-current window's status line could be filled with '-'s to distinguish those windows from the current window. See :help status-line? '^', '='? Really need to look at :help statusline (no '-' in 'statusline'). (Using "StatusLineNC -> StatusLine" will cause Vim to automatically add a line of '^'s to the status line of the current window - Not ideal as the string of '^'s make the current window's status line appear overall lighter than the status line/s of non-current window/s.)
+            StatusLineTerm -> StatusLine
+            StatusLineTermNC -> StatusLineNC
+            VertSplit -> StatusLine
+        # }}}
     # }}}
 
     # No distracting, unhelpful syntax highlighting.
@@ -80,44 +80,44 @@ let defs =<< trim END
     # xxx WarningMsg b w bold
 
     # diff mode --------------------------------------------------------------- {{{
-    #  Executing ":syntax off" can make it easier to view diffs in Vim's diff mode. After ":syntax off" highlighting will be "mostly" limited to showing what has changed; DiffAdd, DiffChange, etc. will be applied but many highlighting groups (all those that are filetype specific -?) won't be. (It seems that the highlight groups listed in the "highlight-default" section of Vim's help will still be used after :syntax off - those groups include Visual, IncSearch, LineNr, etc.)  xxx It'd be nice if ":syntax off" was automatically executed when diff mode is in use; Restoring all syntax highlighting with ":syntax on" would also be nice when diff mode is no longer in use, or if the user stops using this color scheme. (The DiffUpdated and BufWinLeave autocommands could be used.)
-    #  ":hi Normal ctermfg=250" (":syntax off | hi Normal ctermfg=250") will make changes easier to see as unchanged text will be lighter. (Unfortunately command line text will also appear lighter.)
-    DiffAdd b 24  # an added line. xxx Make this identical to DiffText?
-    DiffText b 21
-    DiffChange b 24  # common (unmodified) text on a line that has a change. (DiffText marks the text on that line that was changed.) This shouldn't be the same as Normal - we want to be aware of all lines that were modified (and when the wrap option isn't set the modified part of a line might not be immediately visible).
-    DiffDelete b 23  # Used where a line in the other buffer doesn't exist in the current buffer. (Such lines are filled with '-'s.)
+        # Executing ":syntax off" can make it easier to view diffs in Vim's diff mode. After ":syntax off" highlighting will be "mostly" limited to showing what has changed; DiffAdd, DiffChange, etc. will be applied but many highlighting groups (all those that are filetype specific -?) won't be. (It seems that the highlight groups listed in the "highlight-default" section of Vim's help will still be used after :syntax off - those groups include Visual, IncSearch, LineNr, etc.)  xxx It'd be nice if ":syntax off" was automatically executed when diff mode is in use; Restoring all syntax highlighting with ":syntax on" would also be nice when diff mode is no longer in use, or if the user stops using this color scheme. (The DiffUpdated and BufWinLeave autocommands could be used.)
+        # ":hi Normal ctermfg=250" (":syntax off | hi Normal ctermfg=250") will make changes easier to see as unchanged text will be lighter. (Unfortunately command line text will also appear lighter.)
+        DiffAdd b 24  # an added line. xxx Make this identical to DiffText?
+        DiffText b 21
+        DiffChange b 24  # common (unmodified) text on a line that has a change. (DiffText marks the text on that line that was changed.) This shouldn't be the same as Normal - we want to be aware of all lines that were modified (and when the wrap option isn't set the modified part of a line might not be immediately visible).
+        DiffDelete b 23  # Used where a line in the other buffer doesn't exist in the current buffer. (Such lines are filled with '-'s.)
     # }}}
 
     # filetype=diff ----------------------------------------------------------- {{{
-    #  Note that Vim's diff mode uses different highlight groups to those set here for filetype=diff. (Vim's diff mode uses DiffAdd DiffChange, etc.).
-    diffFile b 18 italic
-    diffNewFile b w
-    diffOldFile b w
-    diffAdded b w
-    diffRemoved b 24 strikethrough
-    diffLine b w italic
-    diffSubName 14 w italic
-    diffContext 19 w
-    diffLine b w
-    diffIndexLine b w
-    diffNoEOL b w
-    diffChanged b w  # Line beginning with a '!' as output by 'diff -c'; note the line could be either a line in "file A" or "file B". (xxx minor: highlight changed lines differently according to whether they are from "file A" or "file B" - and highlight the diffNewFile and diffOldFile lines at the top of the file accordingly.)
+        # Note that Vim's diff mode uses different highlight groups to those set here for filetype=diff. (Vim's diff mode uses DiffAdd DiffChange, etc.).
+        diffFile b 18 italic
+        diffNewFile b w
+        diffOldFile b w
+        diffAdded b w
+        diffRemoved b 24 strikethrough
+        diffLine b w italic
+        diffSubName 14 w italic
+        diffContext 19 w
+        diffLine b w
+        diffIndexLine b w
+        diffNoEOL b w
+        diffChanged b w  # Line beginning with a '!' as output by 'diff -c'; note the line could be either a line in "file A" or "file B". (xxx minor: highlight changed lines differently according to whether they are from "file A" or "file B" - and highlight the diffNewFile and diffOldFile lines at the top of the file accordingly.)
     # }}}
 
     # Spelling ---------------------------------------------------------------- {{{
-    #  We don't use undercurl; it's not always available. Windows Terminal doesn't support undercurl - see https://github.com/microsoft/terminal/issues/7228. The GUI version of Vim will always support undercurl (?); undercurl isn't used just for the GUI version so as to keep the appearance of the GUI and terminal versions consistent.
-    SpellBad w 17
-    SpellCap w 17   # It'd be nice if SpellCap was displayed with a bold first letter (SpellCap is a word that should start with a capital letter). Use a "contained" highlight group for the first letter (similar to how "TODO" is handled in comments) - see https://vi.stackexchange.com/a/19043 and :help syn-contained.
-    SpellLocal w 17
-    SpellRare w 17 italic
+        # We don't use undercurl; it's not always available. Windows Terminal doesn't support undercurl - see https://github.com/microsoft/terminal/issues/7228. The GUI version of Vim will always support undercurl (?); undercurl isn't used just for the GUI version so as to keep the appearance of the GUI and terminal versions consistent.
+        SpellBad w 17
+        SpellCap w 17   # It'd be nice if SpellCap was displayed with a bold first letter (SpellCap is a word that should start with a capital letter). Use a "contained" highlight group for the first letter (similar to how "TODO" is handled in comments) - see https://vi.stackexchange.com/a/19043 and :help syn-contained.
+        SpellLocal w 17
+        SpellRare w 17 italic
     # }}}
 
     # Version control plugins ------------------------------------------------- {{{
-    hgcommitOverflow b w underline
-    gitIdentity b w
-    gitDate b w
-    gitEmail b w
-    gitEmailDelimiter b w
+        hgcommitOverflow b w underline
+        gitIdentity b w
+        gitDate b w
+        gitEmail b w
+        gitEmailDelimiter b w
     # }}}
 END
 let defs = map(defs, 'substitute(v:val, " *#.*", "", "")')  | " strip comments
