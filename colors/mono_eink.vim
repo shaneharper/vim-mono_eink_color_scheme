@@ -76,6 +76,8 @@ let defs =<< trim END
     String 14 w bold  # Strings seem to be defined to include the character/s that mark the start and end of a string; xxx I'd prefer if those characters could be highlighted different to the rest of the string (and I'd prefer that no styling be applied to them).
     Title b w bold
     vimCommentString -> vimComment  # (By default vimCommentString was linked to vimString.)
+    vimCommentTitle -> vimComment  # vimCommentTitle is used for, e.g., "Maintainer:", "Last Change:", etc. at the beginning of a comment. (By default vimCommentTitle was linked to PreProc.)
+    vimCommentTitleLeader -> vimComment
     Visual NONE 20
     # xxx WarningMsg b w bold
 
