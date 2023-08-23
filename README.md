@@ -37,4 +37,4 @@ Some might enjoy using this color scheme on a color display. There is sparing us
   - Here is a [bash function](https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/bashrc#L25) that can be used to view the output of `git diff`. (Note: the function definition assumes there's a symlink to `runtime/macros/less.sh` called `vimless`.)
 
 * **Consider using `:syntax off` when using Vim's diff mode.**
-  <br>A diff might be easier to understand after `:syntax off`; changes (highlighted with _DiffAdd_, _DiffChange_, etc.) will still be shown but other filetype specific syntax highlighting will be turned off.
+  <br>Differences can be easier to see when using Vim's diff mode when diff mode-specific highlighting is applied without also applying filetype-specific syntax highlighting (highlighting of comments, strings, etc.); Run `:syntax off` to achieve that.
