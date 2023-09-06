@@ -34,7 +34,7 @@ Some might enjoy using this color scheme on a color display. There is sparing us
 
 * **Use Vim to view diffs.**<br>
   - Vim's `runtime/macros/less.sh` script can be used as a pager; this color scheme can be applied to the output of programs that generate diffs by using that script. (Often command line utilities displaying changes to a file under revision control color lines red or green depending on whether a line is only in the "old" version of a file or only in the "new" version; that coloring doesn't help when viewing on a monochrome display where both red and green might appear the same shade of grey.)<br>
-  - Here is a [bash function](https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/bashrc#L25) that can be used to view the output of `git diff`. (Note: the function definition assumes there's a symlink to `runtime/macros/less.sh` called `vimless`.)
+  - Here is a [bash function](https://github.com/shaneharper/dotfiles/blob/f6c25a9914db9c184dc50cbea52762dd98876ade/bashrc#L34) that can be used to view the output of `git diff`. (Note: the function definition assumes there's a symlink to `runtime/macros/less.sh` called `vimless`.)
 
 * **Run `:syntax off` when using Vim's diff mode.**
   <br>In diff mode running `:syntax off` can aid with understanding changes made to a file. `:syntax off` does not disable Vim's diff mode highlighting of modified text; text highlighted by diff mode can clearly stand out when filetype-specific syntax highlighting (highlighting of comments, strings, etc.) is not present at the same time.
