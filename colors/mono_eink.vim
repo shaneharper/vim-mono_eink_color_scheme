@@ -36,6 +36,15 @@ endfunction
 let defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
+    # Clear unwanted defaults ------------------------------------------------- {{{
+        #  xxx Remove "unwanted" syntax rules. Completing this has a low priority as what's currently implemented (linking the highlight groups associated with the "unwanted" syntax rules to the Normal group) usually works quite well. (See https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/vim/colors/sgh.vim#L33.)
+        Identifier -> Normal
+        Number -> Normal
+        PreProc -> Normal
+        Statement -> Normal
+        Type -> Normal
+    # }}}
+
     # UI Elements (things other than buffer text)------------------------------ {{{
         LineNr 22 w italic
         NonText 22 w
@@ -53,14 +62,6 @@ let defs =<< trim END
             VertSplit -> StatusLine
         # }}}
     # }}}
-
-    # No distracting, unhelpful syntax highlighting.
-    #  xxx Remove "unwanted" syntax rules. Completing this has a low priority as what's currently implemented (linking the highlight groups associated with the "unwanted" syntax rules to the Normal group) usually works quite well. (See https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/vim/colors/sgh.vim#L33.)
-    Identifier -> Normal
-    Number -> Normal
-    PreProc -> Normal
-    Statement -> Normal
-    Type -> Normal
 
     Comment 14 w
     Constant -> Normal
