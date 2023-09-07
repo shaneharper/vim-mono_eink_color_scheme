@@ -143,7 +143,7 @@ endfor
 
 
 " Text styles for 1-bit color terminals --------------------------------------- {{{
-" (Identifier, Number, PreProc, Statement and Type are already linked to Normal.)
+"   (See "defs" above for the definition of links between some highlighting groups.)
 hi Comment term=italic
 hi LineNr term=italic
 hi StatusLine term=reverse
