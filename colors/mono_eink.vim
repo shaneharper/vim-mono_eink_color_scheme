@@ -45,7 +45,7 @@ let defs =<< trim END
         Type -> Normal
     # }}}
 
-    # UI Elements (things other than buffer text)------------------------------ {{{
+    # UI Elements (things other than buffer text) ----------------------------- {{{
         LineNr 22 w italic
         NonText 22 w
         # Popup Menus --------------------------------------------------------- {{{
