@@ -73,7 +73,7 @@ let defs =<< trim END
     Constant -> Normal
     Directory b 24
     Error lightred 11
-    Folded w 14 italic,bold
+    Folded DarkBlue 17 italic
     helpHyperTextJump b w underline
     helpHyperTextEntry b w italic
     # xxx MatchParen
