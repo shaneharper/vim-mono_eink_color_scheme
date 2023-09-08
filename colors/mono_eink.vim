@@ -152,6 +152,8 @@ hi Comment term=italic
 hi LineNr term=italic
 hi StatusLine term=reverse
 hi String term=bold
+hi helpHyperTextJump term=underline
+hi helpHyperTextEntry term=italic
 " }}}
 
 
