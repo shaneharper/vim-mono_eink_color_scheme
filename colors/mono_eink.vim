@@ -37,12 +37,18 @@ let defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
     # Clear unwanted defaults ------------------------------------------------- {{{
-        #  xxx Remove "unwanted" syntax rules. Completing this has a low priority as what's currently implemented (linking the highlight groups associated with the "unwanted" syntax rules to the Normal group) usually works quite well. (See https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/vim/colors/sgh.vim#L33.)
+        # Here we try to hide unwanted syntax highlighting; we link each highlighting group associated with an unwanted syntax rule to a group that we expect will typically "hide" the unwanted syntax highlighting. The linked to group should be the next group in the "syntax stack" (see :help synstack) where the unwanted syntax highlighting occurs, or Normal if there is no next group.
+        #  xxx Remove unwanted syntax rules. Completing this has a low priority as what's currently implemented (linking each highlight group associated with an unwanted syntax rule to a group we expect will hide the unwanted syntax highlighting) usually works quite well. (See https://github.com/shaneharper/dotfiles/blob/c05e59b5fe77aa2571ef78e785b36d21c9ef94f6/vim/colors/sgh.vim#L33.)
+
         Identifier -> Normal
         Number -> Normal
         PreProc -> Normal
         Statement -> Normal
         Type -> Normal
+
+        vimCommentString -> vimComment  # (By default vimCommentString was linked to vimString.)
+        vimCommentTitle -> vimComment  # vimCommentTitle is used for, e.g., "Maintainer:", "Last Change:", etc. at the beginning of a comment. (By default vimCommentTitle was linked to PreProc.)
+        vimCommentTitleLeader -> vimComment
     # }}}
 
     # UI Elements (things other than buffer text) ----------------------------- {{{
@@ -76,9 +82,6 @@ let defs =<< trim END
     Special DarkMagenta w
     String 14 w bold  # Strings seem to be defined to include the character/s that mark the start and end of a string; xxx I'd prefer if those characters could be highlighted different to the rest of the string (and I'd prefer that no styling be applied to them).
     Title b w bold
-    vimCommentString -> vimComment  # (By default vimCommentString was linked to vimString.)
-    vimCommentTitle -> vimComment  # vimCommentTitle is used for, e.g., "Maintainer:", "Last Change:", etc. at the beginning of a comment. (By default vimCommentTitle was linked to PreProc.)
-    vimCommentTitleLeader -> vimComment
     Visual NONE 20
     # xxx WarningMsg b w bold
 
