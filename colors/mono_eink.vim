@@ -3,6 +3,11 @@
 "
 " This requires at least vim v8.1-1543 (support for "const").
 
+function s:show_error(msg)
+    echohl ErrorMsg | echomsg "*** mono_eink: "..a:msg.." ***" | echohl None
+endfunction
+
+
 set background=light | hi clear  " Reset all highlighting to the defaults (for a light background).
 if exists("syntax_on") | syntax reset | endif
 let colors_name = "mono_eink"
@@ -139,7 +144,7 @@ for l in filter(defs, 'v:val != ""')
         elseif len(e) == 4
             call s:set_colors_and_attributes(e[0], e[1], e[2], e[3])
         else
-            echomsg "*** mono_eink: Invalid highlight attributes. ***"
+            call s:show_error("Invalid highlight attributes.")
         endif
     endif
 endfor
