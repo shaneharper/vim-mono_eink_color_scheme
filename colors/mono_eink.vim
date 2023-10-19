@@ -8,6 +8,15 @@ function s:show_error(msg)
 endfunction
 
 
+if !has("gui_running")
+            \ && ((&t_Co+0) < 256 && (&t_Co+0) > 2)
+    call s:show_error('Unsupported t_Co option setting (&t_Co = "'.&t_Co.'").')
+    call s:show_error('Try ":set t_Co=256" before loading this color scheme.'
+                \  .. ' Or, run the Vim GUI; this color scheme works in the Vim GUI.')
+    finish
+endif
+
+
 set background=light | hi clear  " Reset all highlighting to the defaults (for a light background).
 if exists("syntax_on") | syntax reset | endif
 let colors_name = "mono_eink"
