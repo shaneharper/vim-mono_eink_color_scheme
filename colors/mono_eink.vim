@@ -4,7 +4,7 @@
 " This requires at least vim v8.1-1543 (support for "const").
 
 function s:show_error(msg)
-    echohl ErrorMsg | echomsg "*** mono_eink: "..a:msg.." ***" | echohl None
+    echohl ErrorMsg | echomsg "mono_eink: "..a:msg | echohl None
 endfunction
 
 
