@@ -86,7 +86,6 @@ let defs =<< trim END
     Comment 14 w
     Constant -> Normal
     Directory b 24
-    Error LightRed 11
     Folded DarkBlue 17 italic
     helpExample b w italic  # helpExample is linked to Comment by default. The default doesn't make sense; example code in the Vim help isn't a comment.
     helpHyperTextJump b w underline
