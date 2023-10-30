@@ -70,8 +70,8 @@ let defs =<< trim END
         NonText 22 w
         # Popup Menus --------------------------------------------------------- {{{
             Pmenu b 22
-            PmenuSel w b bold
             PmenuSbar NONE 17
+            PmenuSel w b bold
             PmenuThumb NONE b
         # }}}
         # Status Lines -------------------------------------------------------- {{{
@@ -88,8 +88,8 @@ let defs =<< trim END
     Directory b 24
     Folded DarkBlue 17 italic
     helpExample b w italic  # helpExample is linked to Comment by default. The default doesn't make sense; example code in the Vim help isn't a comment.
-    helpHyperTextJump b w underline
     helpHyperTextEntry b w italic
+    helpHyperTextJump b w underline
     # xxx MatchParen
     netrwSymlink b w
     Search w 15 bold
@@ -103,25 +103,25 @@ let defs =<< trim END
         # Executing ":syntax off" can make it easier to view diffs in Vim's diff mode. After ":syntax off" highlighting will be "mostly" limited to showing what has changed; DiffAdd, DiffChange, etc. will be applied but many highlighting groups (all those that are filetype specific -?) won't be. (It seems that the highlight groups listed in the "highlight-default" section of Vim's help will still be used after :syntax off - those groups include Visual, IncSearch, LineNr, etc.)  xxx It'd be nice if ":syntax off" was automatically executed when diff mode is in use; Restoring all syntax highlighting with ":syntax on" would also be nice when diff mode is no longer in use, or if the user stops using this color scheme. (The DiffUpdated and BufWinLeave autocommands could be used.)
         # ":hi Normal ctermfg=250" (":syntax off | hi Normal ctermfg=250") will make changes easier to see as unchanged text will be lighter. (Unfortunately command line text will also appear lighter.)
         DiffAdd b 24  # an added line. xxx Make this identical to DiffText?
-        DiffText b 21
         DiffChange b 24  # common (unmodified) text on a line that has a change. (DiffText marks the text on that line that was changed.) This shouldn't be the same as Normal - we want to be aware of all lines that were modified (and when the wrap option isn't set the modified part of a line might not be immediately visible).
         DiffDelete b 23  # Used where a line in the other buffer doesn't exist in the current buffer. (Such lines are filled with '-'s.)
+        DiffText b 21
     # }}}
 
     # filetype=diff ----------------------------------------------------------- {{{
         # Note that Vim's diff mode uses different highlight groups to those set here for filetype=diff. (Vim's diff mode uses DiffAdd DiffChange, etc.).
-        diffFile b 18 italic
-        diffNewFile b w
-        diffOldFile b w
         diffAdded b w
-        diffRemoved b 24 strikethrough
-        diffLine b w italic
-        diffSubName 14 w italic
-        diffContext 19 w
-        diffLine b w
-        diffIndexLine b w
-        diffNoEOL b w
         diffChanged b w  # Line beginning with a '!' as output by 'diff -c'; note the line could be either a line in "file A" or "file B". (xxx minor: highlight changed lines differently according to whether they are from "file A" or "file B" - and highlight the diffNewFile and diffOldFile lines at the top of the file accordingly.)
+        diffContext 19 w
+        diffFile b 18 italic
+        diffIndexLine b w
+        diffLine b w
+        diffLine b w italic
+        diffNewFile b w
+        diffNoEOL b w
+        diffOldFile b w
+        diffRemoved b 24 strikethrough
+        diffSubName 14 w italic
     # }}}
 
     # Spelling ---------------------------------------------------------------- {{{
@@ -133,11 +133,11 @@ let defs =<< trim END
     # }}}
 
     # Version control plugins ------------------------------------------------- {{{
-        hgcommitOverflow b w underline
-        gitIdentity b w
         gitDate b w
         gitEmail b w
         gitEmailDelimiter b w
+        gitIdentity b w
+        hgcommitOverflow b w underline
     # }}}
 END
 let defs = map(defs, 'substitute(v:val, " *#.*", "", "")')  | " strip comments
