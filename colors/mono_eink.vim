@@ -32,18 +32,25 @@ function s:set_colors_and_attributes(highlight_group, fg, bg, attributes="none")
             \ "guibg=".s:gui_color(a:bg)
 endfunction
 
-function s:cterm_color(c)  " 'b' for black, 1-24 for shades of grey (1 is the darkest), 'w'for white. Other color names passed to this function are returned as is.
-    const black = 16  " Color 16 should always be pure black (#000000). 0 (or "Black") may not be pure black; It could be displayed as "bright black" (i.e. "DarkGray") for text using the "intense text style" - some terminal's display "bold" or "intense" text using different colors and/or using a bold font. Also, colors <16 may depend on a user configurable terminal color scheme.
-    return a:c == 'b' ? black : a:c == 'w' ? 231 : a:c =~# '^[12]\?\d$' ? a:c+231 : a:c
+function s:cterm_color(c)
+    const pure_black = 16  " #000000. Color 0 (or "Black") may not be pure black; "bright black" (i.e. "DarkGray") could be used where the "intense text style" is used - some terminals display "bold" or "intense" text using different colors and/or using a bold font. Also, colors <16 may depend on a user configurable terminal color scheme.
+    const pure_white = 231  " #FFFFFF
+    const Grey = {brightness -> brightness + 231}  " brightness must be between 1 (darkest) and 24 (lightest).
+
+    return a:c == 'b' ? pure_black
+            \ : a:c == 'w' ? pure_white
+            \ : a:c =~ '^\d*$' && a:c > 0 && a:c < 25 ? Grey(a:c)
+            \ : a:c
 endfunction
 
 function s:gui_color(c)  " c is the same as for s:cterm_color(). Note: this function does not handle 256 color terminal colors specified by a number.
-    if a:c == "b" | return "#000000" | endif
-    if a:c == "w" | return "#FFFFFF" | endif
-    if a:c =~# '^\d'
-        return "#".repeat(printf("%02x", float2nr(a:c * 10.2)), 3)  " grey
-    endif
-    return a:c
+    const Grey_string = {brightness_between_0_and_1 ->
+            \ '#'.repeat(printf('%02x', float2nr(brightness_between_0_and_1*255)), 3)}
+
+    return a:c == 'b' ? '#000000'
+            \ : a:c == 'w' ? '#FFFFFF'
+            \ : a:c =~ '^\d*$' && a:c > 0 && a:c < 25 ? Grey_string(a:c / 25.0)
+            \ : a:c
 endfunction
 
 
