@@ -90,7 +90,7 @@ let defs =<< trim END
         # }}}
     # }}}
 
-    Comment 14 w
+    Comment b 23 bold  # xxx Avoid a "ragged right edge" where multiple consecutive lines contain only comments (possibly preceeded by whitespace) due to not using white as the background color. Could the Comment highlight group be used until the end of each display line of such comment lines?
     Constant -> Normal
     Directory b 24
     Folded DarkBlue 17 italic
