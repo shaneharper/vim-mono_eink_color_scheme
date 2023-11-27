@@ -1,0 +1,3 @@
+Set cursor color.
+    See https://stackoverflow.com/questions/6230490/how-i-can-change-cursor-color-in-vims-color-scheme.
+    It's currently assumed that the cursor is black. Black (and dark grey) background colors aren't currently used where the cursor could be placed. Could the cursor color be set dynamically according to the background color of the character where the cursor is located? If so then we could use a black background color for some highlighting groups if the cursor were to change to white when located where such a highlighting group is used. (Perhaps the String highlighting group could use white text on a black background?)
