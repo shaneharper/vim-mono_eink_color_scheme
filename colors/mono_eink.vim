@@ -140,12 +140,16 @@ let defs =<< trim END
     # }}}
 
     # Version control plugins ------------------------------------------------- {{{
+        gitcommitComment -> mono_einkCommitComment
+        gitcommitOnBranch -> gitcommitComment
         gitDate b w
         gitEmail b w
         gitEmailDelimiter b w
         gitIdentity b w
+        hgcommitComment -> mono_einkCommitComment
         hgcommitOverflow b w underline
         hgcommitUser -> hgcommitComment
+        mono_einkCommitComment 19 w
     # }}}
 END
 let defs = map(defs, 'substitute(v:val, " *#.*", "", "")')  | " strip comments
