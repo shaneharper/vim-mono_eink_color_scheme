@@ -145,6 +145,7 @@ let defs =<< trim END
         gitEmailDelimiter b w
         gitIdentity b w
         hgcommitOverflow b w underline
+        hgcommitUser -> hgcommitComment
     # }}}
 END
 let defs = map(defs, 'substitute(v:val, " *#.*", "", "")')  | " strip comments
