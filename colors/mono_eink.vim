@@ -43,13 +43,14 @@ function s:cterm_color(c)
             \ : a:c
 endfunction
 
-function s:gui_color(c)  " c is the same as for s:cterm_color(). Note: this function does not handle 256 color terminal colors specified by a number.
+function s:gui_color(c)  " c is the same as for s:cterm_color(). Note: this function does not handle most 256 color terminal colors specified by a number.
     const Grey_string = {brightness_between_0_and_1 ->
             \ '#'.repeat(printf('%02x', float2nr(brightness_between_0_and_1*255)), 3)}
 
     return a:c == 'b' ? '#000000'
             \ : a:c == 'w' ? '#FFFFFF'
             \ : a:c =~ '^\d*$' && a:c > 0 && a:c < 25 ? Grey_string(a:c / 25.0)
+            \ : a:c == 136 ? '#AF8700'
             \ : a:c
 endfunction
 
@@ -103,6 +104,7 @@ let defs =<< trim END
     Special DarkMagenta w
     String 14 w bold  # Strings seem to be defined to include the character/s that mark the start and end of a string; xxx I'd prefer if those characters could be highlighted different to the rest of the string (and I'd prefer that no styling be applied to them).
     Title b w bold
+    Todo w 136 bold
     Visual NONE 20
     # xxx WarningMsg b w bold
 
