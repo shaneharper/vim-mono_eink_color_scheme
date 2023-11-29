@@ -51,8 +51,12 @@ function s:gui_color(c)  " c is the same as for s:cterm_color(). Note: this func
             \ : a:c
 endfunction
 
+function s:strip(s, re)
+    return substitute(a:s, a:re, '', 'g')
+endfunction
 
-let defs =<< trim END
+
+const defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
     # Clear unwanted defaults ------------------------------------------------- {{{
@@ -151,8 +155,9 @@ let defs =<< trim END
         mono_einkCommitComment 19 w
     # }}}
 END
-let defs = map(defs, 'substitute(v:val, " *#.*", "", "")')  | " strip comments
-for l in filter(defs, 'v:val != ""')
+const COMMMENT_PREFIX = '#'
+for l in defs
+    let l = s:strip(l, ' *'.COMMMENT_PREFIX.'.*')
     let e = split(l)
     if len(e) == 3 && e[1] == '->'  | " link definition.
         exec "highlight clear" e[0]  | " It's not really required to first clear any attributes? (The link will take priority anyway?)
@@ -161,7 +166,7 @@ for l in filter(defs, 'v:val != ""')
         call s:set_colors_and_attributes(e[0], e[1], e[2])
     elseif len(e) == 4
         call s:set_colors_and_attributes(e[0], e[1], e[2], e[3])
-    else
+    elseif len(e) != 0
         call s:show_error("Invalid highlight attributes.")
     endif
 endfor
