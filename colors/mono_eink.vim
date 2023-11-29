@@ -154,7 +154,7 @@ END
 let defs = map(defs, 'substitute(v:val, " *#.*", "", "")')  | " strip comments
 for l in filter(defs, 'v:val != ""')
     let e = split(l)
-    if e[1] == '->'  | " link definition.
+    if len(e) == 3 && e[1] == '->'  | " link definition.
         exec "highlight clear" e[0]  | " It's not really required to first clear any attributes? (The link will take priority anyway?)
         exec "highlight! link" e[0] e[2]
     elseif len(e) == 3
