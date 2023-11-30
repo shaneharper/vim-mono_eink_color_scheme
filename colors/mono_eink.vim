@@ -22,7 +22,7 @@ if exists("syntax_on") | syntax reset | endif
 let colors_name = "mono_eink"
 
 
-function s:set_colors_and_attributes(highlight_group, fg, bg, attributes="none")
+function s:set_colors_and_attributes_for_highlight_group(highlight_group, fg, bg, attributes)
     exec "highlight" a:highlight_group
             \ "cterm=".a:attributes           "gui=".a:attributes
             \ "ctermfg=".s:cterm_color(a:fg)  "guifg=".s:gui_color(a:fg)
@@ -162,10 +162,9 @@ for l in defs
     if len(e) == 3 && e[1] == '->'  | " link definition.
         exec "highlight clear" e[0]  | " It's not really required to first clear any attributes? (The link will take priority anyway?)
         exec "highlight! link" e[0] e[2]
-    elseif len(e) == 3
-        call s:set_colors_and_attributes(e[0], e[1], e[2])
-    elseif len(e) == 4
-        call s:set_colors_and_attributes(e[0], e[1], e[2], e[3])
+    elseif len(e) == 3 || len(e) == 4
+        let [highlight_group, fg, bg] = e[0:2]
+        call s:set_colors_and_attributes_for_highlight_group(highlight_group, fg, bg, get(e, 3, "none"))
     elseif len(e) != 0
         call s:show_error("Invalid highlight attributes.")
     endif
