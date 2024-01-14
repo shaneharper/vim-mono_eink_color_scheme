@@ -55,8 +55,24 @@ function s:strip(s, re)
     return substitute(a:s, a:re, '', 'g')
 endfunction
 
+function s:set_highlighting_groups(defs)
+    const COMMMENT_PREFIX = '#'
+    for line in a:defs
+        let e = split(s:strip(line, ' *'.COMMMENT_PREFIX.'.*'))
+        if len(e) == 3 && e[1] == '->'  | " link definition.
+            exec "highlight clear" e[0]  | " It's not really required to first clear any attributes? (The link will take priority anyway?)
+            exec "highlight! link" e[0] e[2]
+        elseif len(e) == 3 || len(e) == 4
+            let [highlight_group, fg, bg] = e[0:2]
+            call s:set_colors_and_attributes_for_highlight_group(highlight_group, fg, bg, get(e, 3, "none"))
+        elseif len(e) != 0
+            call s:show_error("Invalid highlight attributes.")
+        endif
+    endfor
+endfunction
 
-const defs =<< trim END
+
+const s:defs =<< trim END
     Normal b w  # Set just in case the terminal doesn't by default use black text on a white background.
 
     # Clear unwanted defaults ------------------------------------------------- {{{
@@ -155,25 +171,14 @@ const defs =<< trim END
         mono_einkCommitComment 19 w
     # }}}
 END
-const COMMMENT_PREFIX = '#'
-for line in defs
-    let e = split(s:strip(line, ' *'.COMMMENT_PREFIX.'.*'))
-    if len(e) == 3 && e[1] == '->'  | " link definition.
-        exec "highlight clear" e[0]  | " It's not really required to first clear any attributes? (The link will take priority anyway?)
-        exec "highlight! link" e[0] e[2]
-    elseif len(e) == 3 || len(e) == 4
-        let [highlight_group, fg, bg] = e[0:2]
-        call s:set_colors_and_attributes_for_highlight_group(highlight_group, fg, bg, get(e, 3, "none"))
-    elseif len(e) != 0
-        call s:show_error("Invalid highlight attributes.")
-    endif
-endfor
+call s:set_highlighting_groups(s:defs)
+
 
 " xxx Use a different font for strings (GUI only) See :help highlight-font. (I couldn't get this to work. Others have also failed to get it to work; See https://vi.stackexchange.com/questions/18660/gvim-use-different-fonts-using-highlight, and https://github.com/vim/vim/issues/10684.)
 
 
 " Text styles for 1-bit color terminals --------------------------------------- {{{
-"   (See "defs" above for the definition of links between some highlighting groups.)
+"   (See "s:defs" above for the definition of links between some highlighting groups.)
 hi Comment term=italic
 hi LineNr term=italic
 hi StatusLine term=reverse
