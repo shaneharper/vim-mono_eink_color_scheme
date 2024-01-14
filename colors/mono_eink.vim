@@ -156,9 +156,8 @@ const defs =<< trim END
     # }}}
 END
 const COMMMENT_PREFIX = '#'
-for l in defs
-    let l = s:strip(l, ' *'.COMMMENT_PREFIX.'.*')
-    let e = split(l)
+for line in defs
+    let e = split(s:strip(line, ' *'.COMMMENT_PREFIX.'.*'))
     if len(e) == 3 && e[1] == '->'  | " link definition.
         exec "highlight clear" e[0]  | " It's not really required to first clear any attributes? (The link will take priority anyway?)
         exec "highlight! link" e[0] e[2]
