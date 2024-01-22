@@ -14,7 +14,7 @@ Some might enjoy using this color scheme on a color display. There is sparing us
 
 ## Set up
 
-Bold text and shades of grey are used by some highlight groups set by this color scheme.
+Bold text and shades of grey are used by some highlight groups set by this color scheme; it may be necessary to configure your terminal/display so that these are displayed correctly.
 
 ### Enabling the display of bold text in Windows Terminal
 
@@ -24,9 +24,9 @@ By default Windows Terminal will use the regular (not bold) font for text that s
 
 | Option                 | Value |
 |------------------------|-------|
+| Display Mode           | Normal (&#9635;<!-- Unicode character 9635 is "white square containing a small black square". xxx The symbol isn't quite right; the icon for the Normal display mode has rounded corners but Unicode character 9635 does not have rounded corners. Use an image (an SVG?) instead. -->)<br>Do not use *Text* mode; light greys appear white and dark greys are displayed as black. |
 | Dark Color Enhancement | 3   <!-- xxx Include an image (an SVG?) of the Dark Color Enhancement icon? --> |
 | Light Color Filter     | 1 |
-| Display Mode           | Normal (&#9635;<!-- Unicode character 9635 is "white square containing a small black square". xxx The symbol isn't quite right; the icon for the Normal display mode has rounded corners but Unicode character 9635 does not have rounded corners. Use an image (an SVG?) instead. -->)<br>Do not use *Text* mode; light greys appear white and dark greys are displayed as black. |
 
 <!-- XXX Provide a command to set these settings. Use https://github.com/elithper/miractl? -->
 
