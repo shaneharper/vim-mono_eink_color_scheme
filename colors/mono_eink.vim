@@ -48,6 +48,7 @@ function s:gui_color(c)  " c is the same as for s:cterm_color(). Note: this func
             \ : a:c == 'w' ? '#FFFFFF'
             \ : a:c =~ '^\d*$' && a:c > 0 && a:c < 25 ? Grey_string(a:c / 25.0)
             \ : a:c == 136 ? '#AF8700'
+            \ : a:c == 132 ? '#AF5F5F'
             \ : a:c
 endfunction
 
@@ -117,7 +118,7 @@ const s:defs =<< trim END
     helpHyperTextJump b w underline
     # xxx MatchParen
     netrwSymlink b w
-    Search w 15 bold
+    Search w 132 bold
     Special DarkMagenta w
     String 14 w bold  # Strings seem to be defined to include the character/s that mark the start and end of a string; xxx I'd prefer if those characters could be highlighted different to the rest of the string (and I'd prefer that no styling be applied to them).
     Title b w bold
